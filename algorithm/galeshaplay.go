@@ -15,43 +15,37 @@ type People struct {
 	Friend      string   // 当前匹配对象
 }
 
+// SortLike 找boy(m)的people结构体，girl(w)的people结构体
 func SortLike(graph model.Graph) (boyArr []*People, girlArr []*People) {
 	e := len(graph)
+	// len(boyArr)
 	m := e - len(graph[0])
-	// n := e - m
-	//  var boyArr1, girlArr1 []*People
 	boyArr1 := make([]*People, 0)
 	girlArr1 := make([]*People, 0)
 	for i, k := range graph {
 		if i < m {
-			// boyArr[i].Name = append(boyArr[i].Name,k[i].Src)
-			// boyArr1[i].Name = k[i].Src
-			// 升序排列
-			likepeople := make([]string, 0)
+			boyLikePeople := make([]string, 0)
 			for _, v := range k {
 				people := v.Des
-				likepeople = append(likepeople, people)
-				// boyArr1[i].LikePeople = append(boyArr1[i].LikePeople, people)
+				boyLikePeople = append(boyLikePeople, people)
 			}
-			// boyArr1[i] = &People{
 			boyArr1 = append(boyArr1, &People{
 				Name:        k[0].Src,
-				LikePeople:  likepeople,
+				LikePeople:  boyLikePeople,
 				CurrentLike: 0,
 				Friend:      "",
 			})
-			// 要对邻接矩阵的按照cost标准进行升序排列
 
 		} else {
-			likepeople := make([]string, 0)
+			girlLikePeople := make([]string, 0)
 			for _, v := range k {
 				people := v.Des
-				likepeople = append(likepeople, people)
+				girlLikePeople = append(girlLikePeople, people)
 				// boyArr1[i].LikePeople = append(boyArr1[i].LikePeople, people)
 			}
 			girlArr1 = append(girlArr1, &People{
 				Name:        k[0].Src,
-				LikePeople:  likepeople,
+				LikePeople:  girlLikePeople,
 				CurrentLike: 0,
 				Friend:      "",
 			})

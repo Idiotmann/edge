@@ -12,13 +12,15 @@ func main() {
 
 	girlIp := model.GirlIP{"w1", "w2", "w3", "w4"}
 	boyIp := model.BoyIP{"m1", "m2", "m3"}
-	// 调用pf 函数
+	// 将数据存储按cost排序存储
+	wbgList, _ := model.Compile(boyIp, girlIp)
+	fmt.Println(wbgList)
+	fmt.Printf("长度是%v", len(wbgList))
 
-	wbglist, _ := model.Compile(boyIp, girlIp)
-
-	for _, v := range wbglist {
+	for _, v := range wbgList {
 		fmt.Printf("Graph长度是=%v \n", len(v.Graph))
 		graph := v.Graph
+		//创建people数据
 		boyArr1, girlArr1 := gs.SortLike(graph)
 		GS.GaleShapley(boyArr1, girlArr1)
 		fmt.Println("名字:\t最终匹配对象:")
@@ -41,7 +43,5 @@ func main() {
 		}
 		fmt.Println(v)
 	}
-	fmt.Println(wbglist)
-	fmt.Printf("长度是%v", len(wbglist))
 
 }
