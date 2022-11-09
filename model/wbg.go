@@ -35,8 +35,6 @@ type BoyIP []string
 // func Compile(m BoyIP, net GirlIP,pf PredFunc) ([]WBG, error) {
 func Compile(m BoyIP, net GirlIP) ([]WBG, error) {
 	var wbgList []WBG
-	// 先定义Cost用来测试
-
 	var graph Graph
 	for _, fromIP := range m {
 		var edges []WeightedEdge
