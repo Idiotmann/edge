@@ -13,6 +13,8 @@ type WBG struct {
 
 type Graph [][]WeightedEdge
 
+//[fromip][toip] WeightedEdge{src des cost}
+
 // WeightedEdge 包含边的源地址、目标地址和消耗
 type WeightedEdge struct {
 	Src  string
